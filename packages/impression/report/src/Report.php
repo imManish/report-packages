@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 class Report extends Eloquent 
 {
     /**
+     * This used to set report type through the session variable
+     * 
      * @var string
      */
     public $string = 'session';
@@ -30,6 +32,11 @@ class Report extends Eloquent
         
     }
 
+    /**
+     * This used to accept request from calling endpoint
+     * 
+     * @return array 
+     * */    
     public function request($method, $endpoint, array $data = null, array $query = null)
     {
         
@@ -50,17 +57,12 @@ class Report extends Eloquent
             switch ($method) {
                 case 'GET':
                     return json_decode('{"data":{"name":"first report","title":"Online Web Tools" ,"id": 1}}');
-                case 'POST':
-                    return json_decode($this->client->post($url, $options)->getBody(), true);
-                case 'PUT':
-                    return json_decode($this->client->put($url, $options)->getBody(), true);
-                case 'DELETE':
-                    return json_decode($this->client->delete($url, $options)->getBody(), true);
+            
                 default:
                     return null;
             }
         } catch (RequestException $e) {
-            throw ApiException::create($e);
+            throw RepotException::create($e);
         }
     }
 }
