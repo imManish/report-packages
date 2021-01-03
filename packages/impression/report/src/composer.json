@@ -1,0 +1,14 @@
+{
+    "name": "impresssion/report",
+    "description": "This is the common package for public report generation and export",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Manish Jakhode",
+            "email": "manish@impression-works.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+    
+}
